@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="inputText" placeholder="Che film stai cercando?"/>
+    <input type="text" v-model="inputText" placeholder="Cerca..."/>
     <button @click="inviaInput">Cerca</button>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
       inviaInput: function(){
-          this.$emit('filtra',this.inputText);
+          this.$emit('filtra', this.inputText);
       }
   }
 };

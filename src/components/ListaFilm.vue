@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Cerca @filtra="filtraFilm" />
+    <Cerca @filtra="filtraFilm"/>
     <ul>
-      <Film v-for="(elem, index) in arrayFilm" :key="index" :info="elem"/>
+      <Film v-for="(elem, index) in filmFiltrati" :key="index" :info="elem"/>
     </ul>
   </div>
 </template>
@@ -20,12 +20,13 @@ export default {
   data() {
     return {
       arrayFilm: [],
-      valueInput: "",
+      valueInput: "one piece",
     };
   },
   computed: {
     filmFiltrati() {
       return this.arrayFilm.filter((film) => {
+        console.log(this.valueInput);
         return film.title.toLowerCase().includes(this.valueInput.toLowerCase());
       });
     },
@@ -34,19 +35,20 @@ export default {
     this.getFilm();
   },
   methods: {
-    filtraFilm: function (valueInput) {
-      this.valueInput = valueInput;
-      console.log(this.valueInput);
+    filtraFilm (inputRicevuto) {
+      this.valueInput = inputRicevuto;
+      this.getFilm();
     },
-    getFilm: function () {
+    getFilm () {
       axios
-        .get("https://developers.themoviedb.org/3/search/movie", {
+        .get("https://api.themoviedb.org/3/search/movie", {
           params: {
             api_key: "3357ea4f20256909db5e4b32656fede0",
             query: this.valueInput,
           },
         })
         .then((response) => {
+          console.log(response.data);
           this.arrayFilm = response.data.results;
         })
         .catch(function (error) {
