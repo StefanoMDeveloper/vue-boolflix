@@ -1,8 +1,8 @@
 <template>
   <div>
     <li>
-      <p>{{ info.title }}</p>
-      <p>{{ info.original_title }}</p>
+      <p>{{ info.name }}</p>
+      <p>{{ info.original_name }}</p>
       <p><img :src="require(`../assets/img/${getFlags(info.original_language)}.png`)" :alt="info.original_language"></p>
       <p>{{ info.vote_average }}</p>
     </li>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "Film",
+  name: "Serie",
   props: {
     info: Object,
   },
