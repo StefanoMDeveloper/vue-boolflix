@@ -28,7 +28,7 @@ export default {
     return {
       arrayFilm: [],
       arraySerie: [],
-      valueInput: "one piece",
+      valueInput: "harry potter",
     };
   },
   computed: {

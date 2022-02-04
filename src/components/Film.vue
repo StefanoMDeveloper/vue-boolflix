@@ -1,6 +1,7 @@
 <template>
   <div>
     <li>
+      <p><img :src="`https://image.tmdb.org/t/p/w185${info.poster_path}`" alt=""></p>
       <p>{{ info.title }}</p>
       <p>{{ info.original_title }}</p>
       <p><img :src="require(`../assets/img/${getFlags(info.original_language)}.png`)" :alt="info.original_language"></p>
