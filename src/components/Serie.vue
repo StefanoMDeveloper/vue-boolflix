@@ -10,13 +10,12 @@
       <p>{{ info.name }}</p>
       <p>{{ info.original_name }}</p>
       <p>
-        <img
-          :src="
-            require(`../assets/img/${getFlags(info.original_language)}.png`)
-          "
-          :alt="info.original_language"
+        <img :src="require(`../assets/img/${getFlags(info.original_language)}.png`)" :alt="info.original_language"
         />
       </p>
+      <span v-for="(element, i) in stelle" :key="i">
+        <i class="fa-solid fa-star"></i>
+      </span>
       <p>{{ info.vote_average }}</p>
     </li>
   </div>
@@ -28,6 +27,11 @@ export default {
   props: {
     info: Object,
   },
+  data() {
+    return {
+      stelle: this.getNStars(this.info.vote_average),
+    };
+  },
   methods: {
     getFlags: function (language) {
       let urlFlag = "jolly";
@@ -35,6 +39,14 @@ export default {
         urlFlag = language;
       }
       return urlFlag;
+    },
+    getNStars: function (voto) {
+      parseInt(voto);
+      let arrayStelle = [];
+      for (let i = 0; i < (voto/2); i++) {
+        arrayStelle.push(i);
+      }
+      return arrayStelle;
     },
   },
 };
