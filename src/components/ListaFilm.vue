@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="container p-4">
     <Cerca @filtra="filtraRicerca" />
     <h1>Film</h1>
-    <ul>
-      <Film v-for="(elem, index) in filmFiltrati" :key="index" :info="elem" />
-    </ul>
-    <h1>Serie</h1>
-    <ul>
+    <div class="card-container row row-cols-4 pe-0 g-1">
+      <Film v-for="(elem, index) in filmFiltrati" :key="index" :info="elem" class="col"/>
+    </div>
+    <h1>Serie TV</h1>
+    <div class="card-container row row-cols-4 pe-0 g-1">
       <Serie v-for="(elem, index) in serieFiltrate" :key="index" :info="elem" />
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -92,4 +92,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  h1{
+    color: black;
+    margin-top: 20px;
+  }
 </style>

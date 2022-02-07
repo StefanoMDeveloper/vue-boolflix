@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+    div{
+        background-color: rgb(67, 67, 67);
+    }
 </style>

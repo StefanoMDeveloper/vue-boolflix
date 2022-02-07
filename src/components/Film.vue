@@ -1,20 +1,24 @@
 <template>
-  <div>
-    <li>
-      <p>
-        <img :src="`https://image.tmdb.org/t/p/w185${info.poster_path}`" alt=""
-        />
-      </p>
+  <div class="cards col">
+    <div class="poster">
+      <img :src="`https://image.tmdb.org/t/p/w300${info.poster_path}`" alt="" />
+    </div>
+
+    <div class="cards-text-container">
       <p>{{ info.title }}</p>
       <p>{{ info.original_title }}</p>
       <p>
-        <img :src="require(`../assets/img/${getFlags(info.original_language)}.png`)" :alt="info.original_language"/>
+        <img
+          :src="
+            require(`../assets/img/${getFlags(info.original_language)}.png`)
+          "
+          :alt="info.original_language"
+        />
       </p>
       <span v-for="(element, i) in stelle" :key="i">
-        <i class="fa-solid fa-star"></i>
+        <i class="fas fa-solid fa-star"></i>
       </span>
-      <p>{{info.vote_average}}</p>
-    </li>
+    </div>
   </div>
 </template>
 
@@ -38,9 +42,9 @@ export default {
       return urlFlag;
     },
     getNStars: function (voto) {
-      parseInt(voto);
+      voto = Math.ceil(voto);
       let arrayStelle = [];
-      for (let i = 0; i < (voto/2); i++) {
+      for (let i = 0; i < voto / 2; i++) {
         arrayStelle.push(i);
       }
       return arrayStelle;
@@ -49,5 +53,41 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+.cards {
+  height: 450px;
+  width: 300px;
+  position: relative;
+  background-color: black;
+  color: white;
+
+
+  .poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+      z-index: 1;
+    &:hover {
+      display: none;
+    }
+    img {
+      height: 450px;
+      width: 300px;
+    }
+  }
+}
+
+.cards-text-container {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  height: 450px;
+  width: 300px;
+  padding: 10px;
+}
+
+.fa-star {
+  color: orange;
+}
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Main />
     <Header/>
+    <Main />
+ 
   </div>
 </template>
 
@@ -19,5 +20,5 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import './assets/style/global.scss';
 </style>
